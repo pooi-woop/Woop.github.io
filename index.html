@@ -3,95 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>皖月清风 - 个人主页</title>
-    <!-- 引入Font Awesome图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #f5f7fa;
-            color: #333;
+    <title>皖月清风</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        accent: '#8B5CF6',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
         }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-        }
-        .platforms {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .platform {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .platform:hover {
-            transform: translateY(-5px);
-        }
-        .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        .steam .icon {
-            color: #171a21;
-        }
-        .bilibili .icon {
-            color: #fb7299;
-        }
-        .github .icon {
-            color: #333;
-        }
-        a {
-            text-decoration: none;
-            color: #3498db;
-            font-size: 1.1rem;
-        }
-        a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-        .copyright {
-            text-align: center;
-            margin-top: 60px;
-            color: #7f8c8d;
-            font-size: 1rem;
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .bg-gradient-custom {
+                @apply bg-gradient-to-br from-dark to-slate-800;
+            }
         }
     </style>
 </head>
-<body>
-    <h1>皖月清风</h1>
-    
-    <div class="platforms">
-        <div class="platform steam">
-            <div class="icon">
-                <i class="fab fa-steam"></i>
-            </div>
-            <a href="https://steamcommunity.com/profiles/你的SteamID" target="_blank">访问我的Steam个人资料</a>
-        </div>
+<body class="bg-gradient-custom min-h-screen text-light font-sans">
+    <div class="container mx-auto px-4 py-12 md:py-24 max-w-4xl">
+        <!-- 标题部分 -->
+        <header class="text-center mb-16">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 tracking-tight">
+                皖月清风
+            </h1>
+            <p class="text-slate-300 mt-4 text-lg md:text-xl max-w-lg mx-auto">
+                人类的正义，和人类的数量一样多吧
+            </p>
+        </header>
         
-        <div class="platform bilibili">
-            <div class="icon">
-                <i class="fab fa-bilibili"></i> <!-- Bilibili图标需确保Font Awesome版本支持 -->
-            </div>
-            <a href="https://space.bilibili.com/你的B站ID" target="_blank">浏览我的B站内容</a>
-        </div>
+        <!-- 链接卡片部分 -->
+        <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Steam链接 -->
+            <a href="https://steamcommunity.com/profiles/76561198984384066/" target="_blank" rel="noopener noreferrer" class="block">
+                <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center text-center card-hover border border-slate-700/50">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center mb-4">
+                        <i class="fa fa-steam text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Steam主页</h2>
+                    <p class="text-slate-400 text-sm">访问我的Steam个人资料</p>
+                </div>
+            </a>
+            
+            <!-- 哔哩哔哩链接 -->
+            <a href="https://space.bilibili.com/444943062?spm_id_from=333.1245.0.0" target="_blank" rel="noopener noreferrer" class="block">
+                <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center text-center card-hover border border-slate-700/50">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-600 to-red-500 flex items-center justify-center mb-4">
+                        <i class="fa fa-play-circle text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">哔哩哔哩主页</h2>
+                    <p class="text-slate-400 text-sm">浏览我的B站内容</p>
+                </div>
+            </a>
+            
+            <!-- GitHub链接 -->
+            <a href="https://github.com/pooi-woop" target="_blank" rel="noopener noreferrer" class="block">
+                <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center text-center card-hover border border-slate-700/50">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-4">
+                        <i class="fa fa-github text-white text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">GitHub主页</h2>
+                    <p class="text-slate-400 text-sm">查看我的代码仓库</p>
+                </div>
+            </a>
+        </main>
         
-        <div class="platform github">
-            <div class="icon">
-                <i class="fab fa-github"></i>
-            </div>
-            <a href="https://github.com/pooi-woop" target="_blank">查看我的代码仓库</a>
-        </div>
+        <!-- 页脚 -->
+        <footer class="mt-20 text-center text-slate-500 text-sm">
+            <p>© 2025 皖月清风. All rights reserved.</p>
+        </footer>
     </div>
     
-    <div class="copyright">
-        © 2025 皖月清风. 保留所有权利.
-    </div>
+    <!-- 简单的动画效果脚本 -->
+    <script>
+        // 页面加载时的渐入效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card-hover');
+            
+            // 为每个卡片添加延迟出现的效果
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + (index * 150));
+            });
+        });
+    </script>
 </body>
 </html>
